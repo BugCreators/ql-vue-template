@@ -40,7 +40,7 @@ export default {
   watch: {
     value: {
       handler(value) {
-        this.editor ? this.setContent(value) : this.initEditor()
+        this.editor ? this.setContents(value) : this.initEditor()
       },
       immediate: true
     }
@@ -83,9 +83,8 @@ export default {
     onChange(value) {
       this.$emit('input', value)
     },
-    setContent(value) {
-      value === this.editor.container.firstChild.innerHTML ||
-        this.editor.setContent(value)
+    setContents(value) {
+      value === this.editor.getHTML() || this.editor.setContents(value)
     }
   }
 }
